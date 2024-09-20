@@ -5,7 +5,7 @@
 <form method="post" enctype="multipart/form-data"> <!--ENCTYPE MULTIPART É NECESSARIO PARA RECEBER BINARIOS COMO VAMOS RECEBER IMAGENS-->
     {%csrf_token%} <!--RECOMENDADO PARA SEGURANÇA DO FORMS-->
     <table>
-        {{new_car_form.as_table}}
+        {{ form.as_table }}
     </table>
     <input type="submit" value="cadastrar" class="btn">
 </form>
