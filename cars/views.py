@@ -3,7 +3,7 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from cars.models import Car
 from cars.forms import CarModelForm
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 
 class CarsView(ListView):
@@ -33,3 +33,7 @@ class UpdateCarView(UpdateView):
     template_name = 'car_update.html'
     success_url = '/cars/'
     
+class DeleteCarView(DeleteView):
+    model = Car
+    template_name = 'car_delete.html'
+    success_url = '/cars/'
