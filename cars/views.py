@@ -1,8 +1,7 @@
-from typing import Any
-from django.db.models.query import QuerySet
-from django.shortcuts import render, redirect
+
 from cars.models import Car
 from cars.forms import CarModelForm
+from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 
@@ -31,7 +30,11 @@ class UpdateCarView(UpdateView):
     model = Car
     form_class = CarModelForm
     template_name = 'car_update.html'
-    success_url = '/cars/'
+
+    def get_success_url(self):
+        return reverse_lazy('detail_car', kwargs={'pk': self.object.pk})
+
+    
     
 class DeleteCarView(DeleteView):
     model = Car
